@@ -8,3 +8,11 @@ CREATE TABLE department (
     name VARCHAR(30) NOT NULL
 );
 
+-- Table for title
+CREATE TABLE title (
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(30) NOT NULL,
+    salary DECIMAL NOT NULL,
+    department_id INT NOT NULL,
+    PRIMARY KEY (id)
+);
