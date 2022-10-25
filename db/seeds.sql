@@ -20,7 +20,7 @@ INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES 
 ('Christiano', 'Ronaldo', 2, null),
 ('Lionel', 'Messi', 1, 1),
-('Kylian', 'Mbappe', 4, null),
+('Catarina', 'Macario', 4, null),
 ('Vivianne', 'Miedema', 3, 3),
 ('Robert', 'Lewandowski', 6, null),
 ('Ada', 'Hegerberg', 5, 5),
