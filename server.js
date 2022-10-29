@@ -5,7 +5,7 @@ const cTable = require("console.table");
 
 require("dotenv").config();
 
-// connection to database
+// Connection to Database
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -114,9 +114,10 @@ const promptUser = () => {
 // Show Departments
 showDepartments = () => {
   console.log('Showing all departments...\n');
-  const sql = `SELECT department.id AS id, department.name AS department FROM department`; 
+  const sql = `SELECT department.id AS id, department.name AS department 
+              FROM department`; 
 
-  connection.promise().query(sql, (err, rows) => {
+  connection.query(sql, (err, rows) => {
     if (err) throw err;
     console.table(rows);
     promptUser();
@@ -126,12 +127,11 @@ showDepartments = () => {
 // Roles
 showRoles = () => {
   console.log('Showing all roles...\n');
-
-  const sql = `SELECT role.id, role.title, department.name AS department
-               FROM role
-               INNER JOIN department ON role.department_id = department.id`;
+  const sql = `SELECT roles.id, roles.title, department.name AS department
+              FROM roles
+              INNER JOIN department ON roles.department_id = department.id`;
   
-  connection.promise().query(sql, (err, rows) => {
+  connection.query(sql, (err, rows) => {
     if (err) throw err; 
     console.table(rows); 
     promptUser();
