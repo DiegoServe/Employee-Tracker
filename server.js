@@ -290,9 +290,9 @@ addEmployee = () => {
     const params = [answer.fistName, answer.lastName]
 
     // Grab Roles
-    const roleSql = `SELECT role.id, role.title FROM role`;
+    const roleSql = `SELECT roles.id, roles.title FROM roles`;
   
-    connection.promise().query(roleSql, (err, data) => {
+    connection.query(roleSql, (err, data) => {
       if (err) throw err; 
       
       const roles = data.map(({ id, title }) => ({ name: title, value: id }));
@@ -311,7 +311,7 @@ addEmployee = () => {
 
               const managerSql = `SELECT * FROM employee`;
 
-              connection.promise().query(managerSql, (err, data) => {
+              connection.query(managerSql, (err, data) => {
                 if (err) throw err;
 
                 const managers = data.map(({ id, first_name, last_name }) => ({ name: first_name + " "+ last_name, value: id }));
