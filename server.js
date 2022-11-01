@@ -22,7 +22,9 @@ connection.connect(err => {
 // Prompts and Welcome Page
 afterConnection = () => {
   console.log("===================================")
+  console.log("                                   ")
   console.log("         EMPLOYEE TRACKER          ")
+  console.log("                                   ")
   console.log("===================================")
   promptUser();
 };
@@ -351,7 +353,7 @@ updateEmployee = () => {
   // Get Employees from Table
   const employeeSql = `SELECT * FROM employee`;
 
-  connection.promise().query(employeeSql, (err, data) => {
+  connection.query(employeeSql, (err, data) => {
     if (err) throw err; 
 
   const employees = data.map(({ id, first_name, last_name }) => ({ name: first_name + " "+ last_name, value: id }));
@@ -369,9 +371,9 @@ updateEmployee = () => {
         const params = []; 
         params.push(employee);
 
-        const roleSql = `SELECT * FROM role`;
+        const roleSql = `SELECT * FROM roles`;
 
-        connection.promise().query(roleSql, (err, data) => {
+        connection.query(roleSql, (err, data) => {
           if (err) throw err; 
 
           const roles = data.map(({ id, title }) => ({ name: title, value: id }));
