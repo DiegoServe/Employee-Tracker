@@ -43,7 +43,6 @@ const promptUser = () => {
                 'Add a role', 
                 'Add an employee', 
                 'Update an employee role',
-                'Update an employee manager',
                 "View employees by department",
                 'Delete a department',
                 'Delete a role',
@@ -81,10 +80,6 @@ const promptUser = () => {
 
       if (choices === "Update an employee role") {
         updateEmployee();
-      }
-
-      if (choices === "Update an employee manager") {
-        updateManager();
       }
 
       if (choices === "View employees by department") {
@@ -418,10 +413,10 @@ employeeDepartment = () => {
                       employee.last_name, 
                       department.name AS department
                FROM employee 
-               LEFT JOIN role ON employee.role_id = role.id 
-               LEFT JOIN department ON role.department_id = department.id`;
+               LEFT JOIN roles ON employee.role_id = roles.id 
+               LEFT JOIN department ON roles.department_id = department.id`;
 
-  connection.promise().query(sql, (err, rows) => {
+  connection.query(sql, (err, rows) => {
     if (err) throw err; 
     console.table(rows); 
     promptUser();
