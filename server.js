@@ -47,7 +47,6 @@ const promptUser = () => {
                 'Delete a department',
                 'Delete a role',
                 'Delete an employee',
-                'View department budgets',
                 'No Action']
     }
   ])
@@ -96,10 +95,6 @@ const promptUser = () => {
 
       if (choices === "Delete an employee") {
         deleteEmployee();
-      }
-
-      if (choices === "View department budgets") {
-        viewBudget();
       }
 
       if (choices === "No Action") {
