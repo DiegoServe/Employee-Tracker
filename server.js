@@ -210,7 +210,7 @@ addRole = () => {
       name: 'salary',
       message: "What is the salary of this role?",
       validate: addSalary => {
-        if (isNAN(addSalary)) {
+        if (addSalary) {
             return true;
         } else {
             console.log('Please enter a salary');
@@ -225,7 +225,7 @@ addRole = () => {
       // Grab Department From Table
       const roleSql = `SELECT name, id FROM department`; 
 
-      connection.promise().query(roleSql, (err, data) => {
+      connection.query(roleSql, (err, data) => {
         if (err) throw err; 
     
         const dept = data.map(({ name, id }) => ({ name: name, value: id }));
@@ -242,7 +242,7 @@ addRole = () => {
             const dept = deptChoice.dept;
             params.push(dept);
 
-            const sql = `INSERT INTO role (title, salary, department_id)
+            const sql = `INSERT INTO roles (title, salary, department_id)
                         VALUES (?, ?, ?)`;
 
             connection.query(sql, params, (err, result) => {
@@ -430,7 +430,7 @@ employeeDepartment = () => {
 deleteDepartment = () => {
   const deptSql = `SELECT * FROM department`; 
 
-  connection.promise().query(deptSql, (err, data) => {
+  connection.query(deptSql, (err, data) => {
     if (err) throw err; 
 
     const dept = data.map(({ name, id }) => ({ name: name, value: id }));
@@ -459,9 +459,9 @@ deleteDepartment = () => {
 
 // Delete Role
 deleteRole = () => {
-  const roleSql = `SELECT * FROM role`; 
+  const roleSql = `SELECT * FROM roles`; 
 
-  connection.promise().query(roleSql, (err, data) => {
+  connection.query(roleSql, (err, data) => {
     if (err) throw err; 
 
     const role = data.map(({ title, id }) => ({ name: title, value: id }));
@@ -476,7 +476,7 @@ deleteRole = () => {
     ])
       .then(roleChoice => {
         const role = roleChoice.role;
-        const sql = `DELETE FROM role WHERE id = ?`;
+        const sql = `DELETE FROM roles WHERE id = ?`;
 
         connection.query(sql, role, (err, result) => {
           if (err) throw err;
