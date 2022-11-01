@@ -18,8 +18,6 @@ A professional employee tracking app which allows you to keep track of employees
 - Step 2: Install NPM package.
 - Step 3: Install MYSQL2 package.
 - Step 4: Install Inquire package.
-- Step 5: Install Console.Table package.
-- Step 6: In the terminal, run node server.js to answer prompts.
 
 ## Usage:
 In order to use the app, first you must type node server.js into your terminal.  Select various prompts to view and edit employees, departments, and other criteria.
